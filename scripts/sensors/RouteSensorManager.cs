@@ -23,12 +23,6 @@ public class RouteSensorManager : MonoBehaviour {
         leftV3.Set(leftSideObj.transform.position.x, leftSideObj.transform.position.y, 0);
         rightV3.Set(rightSideObj.transform.position.x, rightSideObj.transform.position.y, 0);
 
-        /*left.Set(transform.position.x - bc.size.x/2, transform.position.y - bc.size.y/2);
-        right.Set(transform.position.x + bc.size.x/2, transform.position.y + bc.size.y/2);
-
-        leftV3.Set(transform.position.x - bc.size.x/2, transform.position.y - bc.size.y/2, 0);
-        rightV3.Set(transform.position.x + bc.size.x/2, transform.position.y + bc.size.y/2, 0);*/
-
 	}
 
 

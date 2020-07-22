@@ -59,8 +59,7 @@ public class AudienceManager : MonoBehaviour {
 
         if (fansList != null) {clearFansList();}
         else {fansList = new List<GameObject>();}
-
-        //typeFansRange = ((int)_lvl/10) + 2;
+		
         typeFansRange = (int)Mathf.Min(((_lvl/10) + 2), 8);
 
         Debug.Log("audience _trackNr: " + _trackNr);
@@ -102,10 +101,8 @@ public class AudienceManager : MonoBehaviour {
 
             if(Random.value*100 < _lvl){
                 GameObject tmpObj = Instantiate(fanBigPre, new Vector3(tmpPosX, tmpPosY, 0.0f), new Quaternion(0, 0 , tmpRotateZ, 1), gameObject.transform);
-                //tmpObj.AddComponent<Sprite>();
+				
                 //Quaternion.identity
-                //string tmpNameSprite = getBigFanSpriteName(Random.Range(0, typeFansRange));
-                //setSprite(tmpObj.GetComponent<SpriteRenderer>().sprite, tmpNameSprite);
 
                 tmpObj.GetComponent<SpriteRenderer>().sprite = fansAtlas.GetSprite(BananasTypesFans.getFanBigName(Random.Range(0, typeFansRange)));
 
@@ -117,31 +114,9 @@ public class AudienceManager : MonoBehaviour {
         }
         return true;
     }
-    /*public bool makeFans(int _lvl){
-
-        if (fansList != null) {clearFansList();}
-        else {fansList = new List<GameObject>();}
-
-        int typeFansRange = 4;
-
-        float stepX = Random.Range(.4f, .5f);
-        //stand0
-        for(float tmpPosX=-3.4f+stepX; tmpPosX<3.4; tmpPosX+=stepX){
-
-            GameObject tmpObj = new GameObject("stand0Fan" + tmpPosX);
-            tmpObj.AddComponent<Sprite>();
-            string tmpNameSprite = getBigFanSpriteName(Random.Range(0, typeFansRange));
-            setSprite(tmpObj.GetComponent<Sprite>(), tmpNameSprite);
-
-            float tmpPosY = Random.Range(-6.025f, -5.975f);
-            tmpObj.transform.position = new Vector3(tmpPosX, tmpPosY, 0.0f);
-
-            fansList.Add(tmpObj);
-        }
-
-    }*/
-
-
+    
+	
+	
     bool fansKidsRight(int _lvl){
         float stepY = Random.Range(0.01f, 0.1f);
 
@@ -164,6 +139,7 @@ public class AudienceManager : MonoBehaviour {
         return true;
     }
 
+	
 
     bool fansKidsLeft(int _lvl){
         float stepY = Random.Range(0.01f, 0.1f);
@@ -190,8 +166,7 @@ public class AudienceManager : MonoBehaviour {
 
 
     bool makeGrandpa(int _lvl, GameObject[] _opponent){
-
-        //GameObject tmpObj = Instantiate(grandpaPre, new Vector3(tmpPosX, tmpPosY, 0.0f), new Quaternion(0, 0 , tmpRotateZ, 1), gameObject.transform);
+		
         if(tmpGrandpa != null) {tmpGrandpa = null;}
         tmpGrandpa = Instantiate(grandpaPre, gameObject.transform);
         tmpGrandpa.GetComponent<GrandpaManager>().setOpponent(_opponent);
@@ -260,7 +235,7 @@ public class AudienceManager : MonoBehaviour {
         makeOneFan(_lvl, 1, 0.764f, 0.1f, 1.7f, 0.05f, -90f, 5f, tmpLayerNr);
         makeOneFan(_lvl, 1, 0.764f, 0.1f, 2.1f, 0.05f, -90f, 5f, tmpLayerNr);
         makeOneFan(_lvl, 1, 0.764f, 0.1f, 2.5f, 0.05f, -90f, 5f, tmpLayerNr);
-        //makeOneFan(_lvl, 1, 0.613f, 0.1f, 2.9f, 0.05f, -70f, 5f, 1);
+		
         makeOneFan(_lvl, 1, 0.35f, 0.1f, 3.1f, 0.05f, -30f, 5f, tmpLayerNr);
 
         makeOneFan(_lvl, 1, -0.48f, 0.1f, 3.39f, 0.05f, 81f, 5f, tmpLayerNr);    //midle up right corner
@@ -271,7 +246,7 @@ public class AudienceManager : MonoBehaviour {
 
         makeOneFan(_lvl, 1, 3.8f, 0.1f, -4.9f, 0.05f, 85f, 5f, tmpLayerNr);    //right outside down
         makeOneFan(_lvl, 1, 3.8f, 0.1f, -4.55f, 0.05f, 85f, 5f, tmpLayerNr);    //right outside down
-        //makeOneFan(_lvl, 1, 3.8f, 0.1f, -4.2f, 0.05f, 85f, 5f, 1);    //right outside down
+		
         makeOneFan(_lvl, 1, 3.8f, 0.1f, -3.9f, 0.05f, 85f, 5f, tmpLayerNr);    //right outside down
         makeOneFan(_lvl, 1, 3.8f, 0.1f, -3.55f, 0.05f, 85f, 5f, tmpLayerNr);    //right outside down
 

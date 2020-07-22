@@ -27,7 +27,7 @@ public class LvlNrInterfaceAdButtonManager : MonoBehaviour {
     void Start(){
 
         adMnr = gameMgrObj.GetComponent<GameMngr>().getAdvMgr();
-        //animator.SetBool("show1FL", true);
+		
         checkAdReady();
         txtHwMn = txtHwMnObj.GetComponent<Text>();
         setTxtHwMn();
@@ -44,7 +44,7 @@ public class LvlNrInterfaceAdButtonManager : MonoBehaviour {
 
             tap2th = true;
             if (moveSideXcourotine != null) {StopCoroutine(moveSideXcourotine);}
-            //gameMgrObj.GetComponent<GameMngr>().getAdvMgr().playAdLvlNrInterfaceBtn(lvlNrInterfaceObj.GetComponent<LvlNrInterfaceManager>().refreshTextMoney);
+			
             adMnr.playAdLvlNrInterfaceBtn(lvlNrInterfaceObj.GetComponent<LvlNrInterfaceManager>().refreshTextMoney);
             MoveSideX(-moveSideX);
             setBool(false);
@@ -52,8 +52,7 @@ public class LvlNrInterfaceAdButtonManager : MonoBehaviour {
             animator.SetBool("showAllFL", false);
         }
         else{
-
-            //MoveSideX(moveSideX);
+			
             animatorStartShowAll();
             tap1th = true;
         }
@@ -65,9 +64,9 @@ public class LvlNrInterfaceAdButtonManager : MonoBehaviour {
 
         Debug.Log("moveSideBack... start");
         yield return new WaitForSeconds(_moveSideBackTime);
-        //MoveSideX(-moveSideX);
+		
         animatorStartHide2();
-        //setBool(false);
+		
         Debug.Log("moveSideBack... end");
     }
 
@@ -84,7 +83,6 @@ public class LvlNrInterfaceAdButtonManager : MonoBehaviour {
     public void endHide(){
 
         gameObject.transform.localPosition = new Vector2(-1000f, gameObject.transform.localPosition.y);
-        //gameObject.SetActive(false);
     }
 
 
@@ -118,7 +116,6 @@ public class LvlNrInterfaceAdButtonManager : MonoBehaviour {
     public void animatorEndShowAll(){
 
         moveSideXcourotine = StartCoroutine(moveSideBack(moveSideBackTime));
-        //animator.SetBool("showAllFL", false);
     }
 
 
@@ -148,7 +145,6 @@ public class LvlNrInterfaceAdButtonManager : MonoBehaviour {
     public void refresh(){
 
         setTxtHwMn();
-        //moveHide();
         checkAdReady();
     }
 

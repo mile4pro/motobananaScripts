@@ -278,11 +278,6 @@ public class ShopBlockManager : MonoBehaviour {
         listIndex = _listIndex;
         spriteAtlas = _spriteAtlas;
 
-        /*if(shopStuff[listIndex].getPrice() == 0){
-
-            setStuffState(1);
-        }*/
-
 
         loadShopStuff();
 

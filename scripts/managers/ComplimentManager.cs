@@ -27,8 +27,6 @@ public class ComplimentManager : MonoBehaviour
         animator = GetComponent<Animator>();
         animatorComplimet01Start();
         animatorComplimet02Start();
-        //setOffComplimentText();
-        //gameObject.SetActive(false);
     }
 
 
@@ -55,8 +53,7 @@ public class ComplimentManager : MonoBehaviour
     static public void resetCollisionCounter(int _trackNr, RaceInterfaceManager _raceIntMgr){
 
         trackNr = _trackNr;
-        //raceIntMgr = _raceIntMgr;
-        //animator = _raceIntMgr.getComplimentObj().GetComponent<Animator>();
+		
         _raceIntMgr.getComplimentObj().GetComponent<ComplimentManager>().setOffComplimentText();
         collHwMnBands = 0;
         collHwMnOpponents = 0;
@@ -85,8 +82,6 @@ public class ComplimentManager : MonoBehaviour
         //            + ", sensorLastColl: " + sensorLastColl
         //            + ", trackNr: " + trackNr);
         //Debug.Log(  "sensorNoCollisionCount: " + sensorNoCollisionCount);
-        //animator = raceIntMgr.getComplimentObj().GetComponent<Animator>();
-        //animatorComplimet01Start();
     }
 
 

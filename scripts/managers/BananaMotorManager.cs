@@ -179,13 +179,9 @@ public class BananaMotorManager : MonoBehaviour {
         enginePower = tmpRandom + 0.5f;
         maxSpeed = enginePower;
         }
+		
         endRaceFL = true;
-
-        /*inertiaMin = tmpRandom * 2.5f;
-        inertiaMax = tmpRandom * 17.5f;
-        skillMin = 0.75f;
-        skillMax = 0.5f;*/
-        //maxAngularSpeedTMP = (tmpRandom * 50f) + 75f;
+		
         inertiaMin = tmpRandom * 2.5f;
         inertiaMax = tmpRandom * 17.5f;
         skillMin = 0.75f;

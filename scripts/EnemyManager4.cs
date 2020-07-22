@@ -595,19 +595,12 @@ public class EnemyManager4 : MonoBehaviour {
         }
         else{
             particleDustTmpTime = Time.time;
-            //particleDustNumber = 0f;
+			
             particleDustMgr.setDustRate(0f);
             particleDustMgr.setDustSize(0f);
         }
         particleDustFL = _FL;
-
-
-        /*if(particleDustNumber > 25){
-            float tmpNr = particleDustNumber - 25f;
-            float tmpDustSize = tmpNr%10/25f;
-            particleDustMgr.setDustRate(Mathf.Min(tmpNr, 15f));
-            particleDustMgr.setDustSize(Mathf.Min(tmpDustSize, 1f));
-        }*/
+		
         float tmpTime = Time.time - particleDustTmpTime;
         
 		particleDustMgr.setDustRate(Mathf.Min(Mathf.Max(tmpTime*10, 10f), 15f));

@@ -23,11 +23,6 @@ public class ShopShelfManager : MonoBehaviour {
 
     PlayerData      playerData;
 
-    /*void Start(){
-
-        makeBlocks(5);
-    }*/
-
 
 
     void Update(){
@@ -46,25 +41,22 @@ public class ShopShelfManager : MonoBehaviour {
         block = new GameObject[_hwMn];
         blockMgr = new ShopBlockManager[_hwMn];
         int tmpDeltaX;
-
-        //string tmpNameType = shopStuff[0].getNameType();
+		
         int tmpStuffIndex;
 
         for (int i = 0; i < _hwMn; i++){
 
             tmpDeltaX = ((-2)* deltaX) + (i * deltaX);
-            //block[i] = Instantiate(blockPrefab, new Vector3(tmpDeltaX, 0, 0), new Quaternion(0, 0, 0, 1), transform);
+			
             block[i] = Instantiate(blockPrefab, blocksObj.transform, false);
             block[i].transform.localPosition = new Vector3(tmpDeltaX, 0, 0);
             blockMgr[i] = block[i].GetComponent<ShopBlockManager>();
-
-            /*int tmpNr = i + 1;
-            blockMgr[i].setButtonImage(spriteAtlas.GetSprite("look" + tmpNr.ToString("00")));*/
+			
             tmpStuffIndex = i;
             if(tmpStuffIndex > shopStuff.Count-1){
                 tmpStuffIndex = i - shopStuff.Count;
             }
-            //blockMgr[i].setButtonImage( spriteAtlas.GetSprite( shopStuff[tmpStuffIndex].getNameImage() ) );
+			
             blockMgr[i].setShopStuff(shopStuff, tmpStuffIndex, spriteAtlas, playerData, _showTitleFL, _shopManager, this);
         }
     }
@@ -90,7 +82,7 @@ public class ShopShelfManager : MonoBehaviour {
         foreach (ShopBlockManager block in blockMgr)
             {
                 block.setTargetPos(_dir, deltaX);
-                //block.transform.localPosition = Vector3.MoveTowards(blockObj.transform.localPosition, target.position, step);
+				
             }
     }
 

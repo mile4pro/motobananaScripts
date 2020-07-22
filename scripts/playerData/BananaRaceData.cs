@@ -103,16 +103,6 @@ public class BananaRaceData : MonoBehaviour {
 
         float tmpTime = Time.time;
 
-        /*if (actualNrLap < 0){
-            setTimeStart(tmpTime);
-        }
-        else{
-            setTimeLapEnd(tmpTime);
-            getTimeLastLap();
-        }
-
-        addNrActualLap();*/
-
         addNrActualLap();
         if (actualNrLap>0){
             setTimeLapEnd(tmpTime);

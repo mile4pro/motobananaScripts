@@ -74,7 +74,6 @@ public class ShopManager : MonoBehaviour {
         tapBumniForMoreStuffImageObj.SetActive(_FL);
 
         trackBtnObj.SetActive(_FL);
-        //developResetBtnObj.SetActive(_FL);
 
         setOnShopStuff(!_FL);
 

@@ -9,9 +9,6 @@ public class PlayerData : MonoBehaviour {
             advCnt;
 
     float   lapRecord, actualLvlLapRecord, actualLvlRecord, actualNrOppRecord;
-            //thisRaceBestTimeLap, thisRaceTime;
-
-    //string  tmpKeyNameActualLvlLapRecord, tmpKeyNameActualLvlRecord;
 
 
 //************************************************
@@ -69,24 +66,6 @@ public class PlayerData : MonoBehaviour {
         string tmpNameSmallD = "smallD" + _arrIdx.ToString("000");
         string tmpNameBigD = "bigD" + _arrIdx.ToString("000");
 
-        /*int tmpSmallDidx = PlayerPrefs.GetInt(tmpNameSmallD, -1);
-        if (tmpSmallDidx < 0){
-            tmpSmallDidx = (int)Random.Range(0, smallD.Length);
-            if (tmpSmallDidx > smallD.Length - 1){
-                tmpSmallDidx = smallD.Length - 1;
-            }
-            PlayerPrefs.SetInt(tmpNameSmallD, tmpSmallDidx);
-        }
-
-        int tmpBigDidx = PlayerPrefs.GetInt(tmpNameBigD, -1);
-        if (tmpBigDidx < 0){
-            tmpBigDidx = (int)Random.Range(0, bigD.Length);
-            if (tmpBigDidx > bigD.Length - 1){
-                tmpBigDidx = bigD.Length - 1;
-            }
-            PlayerPrefs.SetInt(tmpNameSmallD, tmpBigDidx);
-        }*/
-
         int tmpSmallDi = PlayerPrefs.GetInt(tmpNameSmallD, -1);
         int tmpSmallD = safeArrSmallD[tmpSmallDi];
         int tmpBigDi = PlayerPrefs.GetInt(tmpNameBigD, -1);
@@ -125,75 +104,8 @@ public class PlayerData : MonoBehaviour {
             }
         }
 
-        /*else if (_nameType == "time"){
-
-            float tmpFloat = PlayerPrefs.GetFloat(_nameVar, _min);
-            int tmpInt = (int)(tmpFloat * 1000);
-            int tmpSafe = PlayerPrefs.GetInt(tmpNameSafe, -1);
-            int tmpSafeCheck = (tmpInt * tmpSmallD) % tmpBigD;
-
-            if (tmpSafe == tmpSafeCheck || tmpInt == _min){
-
-                Debug.Log( "----- SAFE DATA SET --> ..OK..");
-                PlayerPrefs.SetFloat(_nameVar, _HwMn);
-                int tmpSafeNew = (((int)(_HwMn * 1000)) * tmpSmallD) % tmpBigD;
-                PlayerPrefs.SetInt(tmpNameSafe, tmpSafeNew);
-                return true;
-            }
-            else{
-
-                Debug.Log( "----- SAFE DATA SET --> ..FALSE - DELETE..");
-                PlayerPrefs.SetInt("checkFL", 0);
-                checkPlayerPrefs();
-                return false;
-            }
-        }*/
-
         return true;
     }
-
-
-
-    /*bool safeDataVariableSet(string _nameVar, float _HwMn, string _nameType, float _min, int _arrIdx){
-
-        string tmpNameSafe = "S" + _nameVar + "S";
-
-        string tmpNameSmallD = "smallD" + _arrIdx.ToString("000");
-        string tmpNameBigD = "bigD" + _arrIdx.ToString("000");
-
-
-        int tmpSmallDi = PlayerPrefs.GetInt(tmpNameSmallD, -1);
-        int tmpSmallD = safeArrSmallD[tmpSmallDi];
-        int tmpBigDi = PlayerPrefs.GetInt(tmpNameBigD, -1);
-        int tmpBigD = safeArrBigD[tmpBigDi];
-
-
-        if (_nameType == "time"){
-
-            float tmpFloat = PlayerPrefs.GetFloat(_nameVar, _min);
-            int tmpInt = (int)(tmpFloat * 1000);
-            int tmpSafe = PlayerPrefs.GetInt(tmpNameSafe, -1);
-            int tmpSafeCheck = (tmpInt * tmpSmallD) % tmpBigD;
-
-            if (tmpSafe == tmpSafeCheck || tmpInt == (int)_min){
-
-                Debug.Log( "----- SAFE DATA TIME SET --> ..OK..");
-                PlayerPrefs.SetFloat(_nameVar, _HwMn);
-                int tmpSafeNew = (((int)(_HwMn * 1000)) * tmpSmallD) % tmpBigD;
-                PlayerPrefs.SetInt(tmpNameSafe, tmpSafeNew);
-                return true;
-            }
-            else{
-
-                Debug.Log( "----- SAFE DATA TIME SET --> ..FALSE - DELETE..");
-                PlayerPrefs.SetInt("checkFL", 0);
-                checkPlayerPrefs();
-                return false;
-            }
-        }
-
-        return true;
-    }*/
 
 
 
@@ -203,24 +115,6 @@ public class PlayerData : MonoBehaviour {
 
         string tmpNameSmallD = "smallD" + _arrIdx.ToString("000");
         string tmpNameBigD = "bigD" + _arrIdx.ToString("000");
-
-        /*int tmpSmallDidx = PlayerPrefs.GetInt(tmpNameSmallD, -1);
-        if (tmpSmallDidx < 0){
-            tmpSmallDidx = (int)Random.Range(0, smallD.Length);
-            if (tmpSmallDidx > smallD.Length - 1){
-                tmpSmallDidx = smallD.Length - 1;
-            }
-            PlayerPrefs.SetInt(tmpNameSmallD, tmpSmallDidx);
-        }
-
-        int tmpBigDidx = PlayerPrefs.GetInt(tmpNameBigD, -1);
-        if (tmpBigDidx < 0){
-            tmpBigDidx = (int)Random.Range(0, bigD.Length);
-            if (tmpBigDidx > bigD.Length - 1){
-                tmpBigDidx = bigD.Length - 1;
-            }
-            PlayerPrefs.GetInt(tmpNameBigD, tmpBigDidx);
-        }*/
 
         int tmpSmallDi = PlayerPrefs.GetInt(tmpNameSmallD, -1);
         int tmpSmallD = safeArrSmallD[tmpSmallDi];
@@ -255,43 +149,7 @@ public class PlayerData : MonoBehaviour {
         }
     }
 
-
-
-    /*float safeDataVariableTimeGet(string _nameVar, float _min, int _arrIdx){
-
-        string tmpNameSafe = "S" + _nameVar + "S";
-
-        string tmpNameSmallD = "smallD" + _arrIdx.ToString("000");
-        string tmpNameBigD = "bigD" + _arrIdx.ToString("000");
-
-
-        int tmpSmallDi = PlayerPrefs.GetInt(tmpNameSmallD, -1);
-        int tmpSmallD = safeArrSmallD[tmpSmallDi];
-        int tmpBigDi = PlayerPrefs.GetInt(tmpNameBigD, -1);
-        int tmpBigD = safeArrBigD[tmpBigDi];
-
-        float tmpFloat = PlayerPrefs.GetFloat(_nameVar, _min);
-        int tmpInt = (int)(tmpFloat * 1000);
-        int tmpSafe = PlayerPrefs.GetInt(tmpNameSafe, -1);
-        int tmpSafeCheck = (tmpInt * tmpSmallD) % tmpBigD;
-
-
-        if (tmpSafe == tmpSafeCheck || tmpInt == (int)_min){
-
-            //Debug.Log( "----- SAFE DATA GET --> ..OK..");
-            return tmpFloat;
-        }
-        else{
-
-            //Debug.Log( "----- SAFE DATA GET --> ..FALSE - DELETE..");
-            PlayerPrefs.SetInt("checkFL", 0);
-            checkPlayerPrefs();
-            tmpFloat = PlayerPrefs.GetFloat(_nameVar, _min);
-            return tmpFloat;
-        }
-    }*/
-
-
+	
 
 //************************************************************
 //******************************************
@@ -300,7 +158,6 @@ public class PlayerData : MonoBehaviour {
     void Start(){
 
         checkPlayerPrefs();
-        //loadPlayerData();
     }
 
 
@@ -309,26 +166,18 @@ public class PlayerData : MonoBehaviour {
 
         actualTrack = PlayerPrefs.GetInt("actualTrack", 0);
         minLvl = PlayerPrefs.GetInt("minLvl", 1);
-
-        //maxLvl = PlayerPrefs.GetInt("maxLvl", 1);
-        //maxLvl = safeDataVariableIntGet("maxLvl", 1, 0);
+		
         getMaxLvl();
-
-        //actualLvl = PlayerPrefs.GetInt("actualLvl", 1);
-        //actualLvl = safeDataVariableIntGet("actualLvl", 1, 1);
+		
         getActualLvl();
-
-        //massLvl = PlayerPrefs.GetInt("massLvl", 1);
+		
         massLvl = safeDataVariableIntGet("massLvl", 1, 2);
-        //enginePowerLvl = PlayerPrefs.GetInt("enginePowerLvl", 1);
+		
         enginePowerLvl = safeDataVariableIntGet("enginePowerLvl", 1, 3);
-
-        //money = PlayerPrefs.GetInt("money", 0);
+		
         money = safeDataVariableIntGet("money", 0, 4);
-
-        //lapRecord = PlayerPrefs.GetFloat("lapRecord", 9999);
+		
         getLapRecord();
-        //lapRecord = safeDataVariableTimeGet("lapRecord", 0f, 6);
 
         advCnt = PlayerPrefs.GetInt("advCnt", 7);
 
@@ -392,9 +241,7 @@ public class PlayerData : MonoBehaviour {
 
 
     public bool setLapRecord(float _lapRecord){
-
-        /*safeDataVariableSet("lapRecord", _lapRecord, "time", 0f, 6);
-        lapRecord = getLapRecord();*/
+		
         lapRecord = _lapRecord;
 
         if (actualTrack == 0){
@@ -445,7 +292,6 @@ public class PlayerData : MonoBehaviour {
     public int getMoney(){
 
         money = safeDataVariableIntGet("money", 0, 4);
-        //money = PlayerPrefs.GetInt("money", 0);
         return money;
     }
 
@@ -456,7 +302,6 @@ public class PlayerData : MonoBehaviour {
         safeDataVariableSet("money", money, "int", 0, 4);       //if game
         //safeDataVariableSet("money", 99999999, "int", 0, 4);  //if dev test add more $
         money = getMoney();
-        //PlayerPrefs.SetInt("money", money);
         return true;
     }
 
@@ -467,11 +312,9 @@ public class PlayerData : MonoBehaviour {
 //******  UPGRADES  *************
 
     public bool updateEnginePowerLvl(){
-
-        //enginePowerLvl = PlayerPrefs.GetInt("enginePowerLvl", 1);
+		
         enginePowerLvl = getEnginePowerLvl();
         enginePowerLvl += 1;
-        //PlayerPrefs.SetInt("enginePowerLvl", enginePowerLvl);
         setEnginePowerLvlLvl(enginePowerLvl);
         return true;
     }
@@ -479,11 +322,9 @@ public class PlayerData : MonoBehaviour {
 
 
     public bool updateMassLvl(){
-
-        //massLvl = PlayerPrefs.GetInt("massLvl", 1);
+		
         massLvl = getMassLvl();
         massLvl += 1;
-        //PlayerPrefs.SetInt("massLvl", massLvl);
         setMassLvl(massLvl);
         return true;
     }
@@ -495,22 +336,18 @@ public class PlayerData : MonoBehaviour {
 
 
     public bool setMassLvl(int _massLvl){
-
-        //massLvl = _massLvl;
+		
         safeDataVariableSet("massLvl", _massLvl, "int", 1, 2);
         massLvl = getMassLvl();
-        //PlayerPrefs.SetInt("massLvl", massLvl);
         return true;
     }
 
 
 
     public bool setEnginePowerLvlLvl(int _enginePowerLvl){
-
-        //enginePowerLvl = _enginePowerLvl;
+		
         safeDataVariableSet("enginePowerLvl", _enginePowerLvl, "int", 1, 3);
         enginePowerLvl = getEnginePowerLvl();
-        //PlayerPrefs.SetInt("enginePowerLvl", enginePowerLvl);
         return true;
     }
 
@@ -521,11 +358,10 @@ public class PlayerData : MonoBehaviour {
         int tmpSafeNr = 0;
 
         if(actualTrack == 0){
-            //maxLvl = _maxLvl;
+			
             //safeDataVariableSet("maxLvl", 111, "int", 1, tmpSafeNr);      //if dev test
             safeDataVariableSet("maxLvl", _maxLvl, "int", 1, 0);            //if game
             maxLvl = getMaxLvl();
-            //PlayerPrefs.SetInt("maxLvl", maxLvl);
         }
         else{
 
@@ -541,8 +377,7 @@ public class PlayerData : MonoBehaviour {
 
 
     public bool setActualLvl(int _actualLvl){
-
-        //actualLvl = _actualLvl;
+		
         int tmpSafeNr = 1;
 
         if(actualTrack == 0){
@@ -556,7 +391,7 @@ public class PlayerData : MonoBehaviour {
             safeDataVariableSet(tmpName, _actualLvl, "int", 1, tmpSafeNr);
             actualLvl = getActualLvl();
         }
-        //PlayerPrefs.SetInt("actualLvl", actualLvl);
+		
         return true;
     }
 
@@ -574,7 +409,6 @@ public class PlayerData : MonoBehaviour {
     public int getEnginePowerLvl(){
 
         enginePowerLvl = safeDataVariableIntGet("enginePowerLvl", 1, 3);
-        //enginePowerLvl = PlayerPrefs.GetInt("enginePowerLvl", 1);
         return enginePowerLvl;
     }
 
@@ -583,7 +417,6 @@ public class PlayerData : MonoBehaviour {
     public int getMassLvl(){
 
         massLvl = safeDataVariableIntGet("massLvl", 1, 2);
-        //massLvl = PlayerPrefs.GetInt("massLvl", 1);
         return massLvl;
     }
 
@@ -681,8 +514,7 @@ public class PlayerData : MonoBehaviour {
 
 
     public float getLapRecord(){
-
-        //lapRecord = safeDataVariableTimeGet("lapRecord", 0f, 6);
+		
         if (actualTrack == 0){
             lapRecord = PlayerPrefs.GetFloat("lapRecord", 9999);
         }
@@ -703,34 +535,7 @@ public class PlayerData : MonoBehaviour {
     }
 
 
-    /*public float getThisRaceBestTimeLap(){
-        return thisRaceBestTimeLap;
-    }
-    public bool setThisRaceBestTimeLap(float _time){
-        if (thisRaceBestTimeLap>0){
-            if(_time<thisRaceBestTimeLap){
-                thisRaceBestTimeLap = _time;
-                return true;
-            }
-            return false;
-        }
-        else{
-            thisRaceBestTimeLap = _time;
-            return false;
-        }
-    }
-
-
-    public float getThisRaceTime(){
-        return thisRaceTime;
-    }
-    public bool setThisRaceTime(float _time){
-        thisRaceTime = _time;
-        return true;
-    }*/
-
-
-
+	
 //***********************************************************
 //******** new stats 20190508
     public int getStartRaceCount(){
