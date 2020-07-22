@@ -99,13 +99,7 @@ public class EnemyManager4 : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         tmpObj = new GameObject();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        /*bananTypeNr = Random.Range(1, 8);
-        cashingSpriteNames(bananTypeNr);
-        cashingSprites();
-        spriteRenderer.sprite = spriteNeutral;*/
-        //setBananaType(Random.Range(1, 8));
-        //if (driverPlayerFL) setBananaType(0);
+		
         setBananaType(bananTypeNr);
 
         raceData = new BananaRaceData();
