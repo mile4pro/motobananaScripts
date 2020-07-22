@@ -33,8 +33,6 @@ public class GameMngr : MonoBehaviour {
 
     [SerializeField]
     GameObject tutorialInterfaceobj;
-    //bool loadOKFL;
-    //BananasTypes bananasTypes;
 
     Texture2D actualTrackRoadFacture;
 
@@ -60,14 +58,7 @@ public class GameMngr : MonoBehaviour {
         loadTracksArr();
 
         helperGameObjectsMgr = HelperGameObjectsObj.GetComponent<HelperGameObjectsManager>();
-        //bananasTypes = new BananasTypes();
-
-        /*if (loadTracksArr()){
-            if (loadTrack(0)){
-               startingPlaces = track[actualTrack].GetComponent<TrackManager>().getStartingPlaces();
-               loadBananas(11, 6);
-           }
-        }*/
+		
     }
 
 
@@ -87,8 +78,7 @@ public class GameMngr : MonoBehaviour {
         actualLvl = _nrLvl;
 
         checkGraphicsSettings();
-
-        //ComplimentManager.resetCollisionCounter(_nrTrack, raceIntMngr);
+		
 
         if (loadTrack(_nrTrack)){
 
@@ -143,11 +133,9 @@ public class GameMngr : MonoBehaviour {
 
         actualTrack = _nrTrack;
         track[actualTrack].SetActive(true);
-        //actualTrackRoadFacture = track[actualTrack].transform.Find("roadFacture").gameObject.GetComponent<SpriteRenderer>().sprite.texture;
+		
         actualTrackRoadFacture = (Texture2D)track[actualTrack].transform.Find("images").Find("roadFacture").gameObject.GetComponent<SpriteRenderer>().sprite.texture;
-        //if (!optionsTraceOfTiresFL){actualTrackRoadFacture.Apply();}
-        //Debug.Log("GameMngr actualTrackRoadFacture: " + actualTrackRoadFacture);
-        //startingPlaces = track[_nrTrack].GetComponent<TrackManager>().getActualStartingPlaces();
+		
         return true;
     }
 
@@ -158,86 +146,9 @@ public class GameMngr : MonoBehaviour {
         track[actualTrack].GetComponentInChildren<AudienceManager>().makeFans(_nrLvl, _nrTrack, _opponent);
         return true;
     }
-    /*public bool loadBananas(int _hwMnOpponents, int _playerStartPlace){
 
-        //startingPlaces = track[actualTrack].GetComponent<TrackManager>().getActualStartingPlaces();
-
-        if (_playerStartPlace > -1){
-            player = Instantiate(playerPre);
-            player.transform.position = startingPlaces[_playerStartPlace];
-            isPlayerFL = true;
-        }
-        else{
-            isPlayerFL = false;
-        }
-        //player.GetComponent<AutoManager3>().setBananasTypes(bananasTypes);
-
-        opponent = new GameObject[_hwMnOpponents];
-        for (int i=0; i<_hwMnOpponents; i++){
-            opponent[i] = Instantiate(opponentPre);
-            opponent[i].GetComponent<EnemyManager3>().setCurves(track[actualTrack].GetComponent<TrackManager>().getSensors());
-            //opponent[i].GetComponent<EnemyManager3>().setBananasTypes(bananasTypes);
-
-            int tmpStartPosition = i;
-            if (_playerStartPlace > -1 && tmpStartPosition >= _playerStartPlace){
-                tmpStartPosition += 1;
-            }
-
-            opponent[i].transform.position = startingPlaces[tmpStartPosition];
-        }
-
-        return true;
-    }*/
-
-
-
-
-    /*public bool loadBananas2(int _hwMnOpponents, int _playerStartPlace){
-
-        opponent = new GameObject[_hwMnOpponents+1];
-
-        for (int i=0; i<_hwMnOpponents+1; i++){
-
-            opponent[i] = Instantiate(opponentPre);
-            opponent[i].GetComponent<EnemyManager4>().setCurves(track[actualTrack].GetComponent<TrackManager>().getSensors());
-            opponent[i].transform.position = startingPlaces[i];
-
-            if (_playerStartPlace == i){
-                opponent[i].GetComponent<EnemyManager4>().setDriverPlayerFL(true);
-                opponent[i].GetComponent<EnemyManager4>().setBananaType(0);
-            }
-        }
-
-        return true;
-    }*/
-
-
-
-
-    /*public bool loadBananas(int _hwMnOpponents){
-
-        //startingPlaces = track[actualTrack].GetComponent<TrackManager>().getActualStartingPlaces();
-
-            player = Instantiate(playerPre);
-            player.transform.position = startingPlaces[_hwMnOpponents];
-            isPlayerFL = true;
-
-        //player.GetComponent<AutoManager3>().setBananasTypes(bananasTypes);
-
-        opponent = new GameObject[_hwMnOpponents];
-        for (int i=0; i<_hwMnOpponents; i++){
-            opponent[i] = Instantiate(opponentPre);
-            opponent[i].GetComponent<EnemyManager3>().setCurves(track[actualTrack].GetComponent<TrackManager>().getSensors());
-            //opponent[i].GetComponent<EnemyManager3>().setBananasTypes(bananasTypes);
-
-            int tmpStartPosition = i;
-
-            opponent[i].transform.position = startingPlaces[tmpStartPosition];
-        }
-
-        return true;
-    }*/
-
+	
+	
     public bool loadBananas2(int _nrLvl, int _playerStartPlace){
 
         int _hwMnOpponents = _nrLvl % 10;
@@ -254,7 +165,6 @@ public class GameMngr : MonoBehaviour {
 
             opponent[i].GetComponent<EnemyManager4>().setCurves(track[actualTrack].GetComponent<TrackManager>().getSensors());
             opponent[i].transform.position = startingPlaces[i];
-            //opponent[i].transform.rotation = startingPlacesRotation[i];
 
             opponent[i].GetComponent<EnemyManager4>().setMiddleBell(raceIntMngr.getMiddleBell());
             opponent[i].GetComponent<EnemyManager4>().setBananaStartingNr(i);
@@ -266,9 +176,7 @@ public class GameMngr : MonoBehaviour {
 
                 opponent[i].GetComponent<EnemyManager4>().setAudioListener(true);
             }
-            /*else{
-                raceIntMngr.getMiddleBell().addToPlaceChecker(i, false);
-            }*/
+			
             opponent[i].GetComponent<EnemyManager4>().setRoadFacture(actualTrackRoadFacture);
 
             opponent[i].GetComponent<EnemyManager4>().setGraphicsOptionsSetings(optionsDustOnRoadFL, optionsTraceOfTiresFL, optionsTraceOfTiresColorLightFL);
@@ -294,8 +202,6 @@ public class GameMngr : MonoBehaviour {
 
         opponent = new GameObject[_hwMnOpponents+1];
 
-        //float tmpDeltaTraceOfTiresColorDark = playerData.getDeltaTraceOfTiresColorDarkRandom();
-
         for (int i=0; i<_hwMnOpponents+1; i++){
 
             opponent[i] = Instantiate(opponentPre);
@@ -313,16 +219,12 @@ public class GameMngr : MonoBehaviour {
 
             if (i == _hwMnOpponents){
                 tmpEnemyMgr.setDriverPlayerFL(true);
-                //opponent[i].GetComponent<EnemyManager4>().setBananaTypeNr(0);
+				
                 setBananaParameters(opponent[i], false);
-                //opponent[i].GetComponent<EnemyManager4>().setBananaType(0);
-                //raceIntMngr.getMiddleBell().addToPlaceChecker(i, true);
+				
                 opponent[i].GetComponent<EnemyManager4>().setAudioListener(true);
-                //opponent[i].layer = 10;
             }
-            /*else{
-                raceIntMngr.getMiddleBell().addToPlaceChecker(i, false);
-            }*/
+			
 
             tmpEnemyMgr.setRoadFacture(actualTrackRoadFacture);
 
@@ -344,8 +246,7 @@ public class GameMngr : MonoBehaviour {
 
 
     public bool setOnAllCars(){
-
-        //loadBananas(11, 1);
+		
         float tmpStartTime = Time.time;
 
         for (int i=0; i<opponent.Length; i++){
@@ -408,8 +309,7 @@ public class GameMngr : MonoBehaviour {
     public void raceInterfaceStart(){
 
         raceInterfaceObj.SetActive(true);
-        //ComplimentManager.resetCollisionCounter(actualTrack, raceIntMngr);
-        //raceInterfaceObj.GetComponent<RaceInterfaceManager>().animatorStartFadeOut();
+		
         raceIntMngr.animatorStartFadeOut(actualTrack);
         raceIntMngr.setTextNrLevel(actualLvl);
     }
@@ -497,23 +397,18 @@ public class GameMngr : MonoBehaviour {
             else{
                 bananMngr.setBananaTypeNr(Random.Range(1, 8));
             }
-
-            //return true;
         }
 
 
         else{   //is player
-            //tmpLvlTypeNr = Mathf.Floor((actualLvl-1)/10);
 
             tmpEnginePower = Mathf.Min(4.25f, 2f + ((float)(playerData.getEnginePowerLvl()-1)* 0.075f));     //1.975f ... *0.05f
             tmpAngularSpeed = Mathf.Min(200f, 100f + ((tmpEnginePower-2f) * 50));   // (tmpEnginePower-2f) * 50
-            //tmpSkillMin = Mathf.Max(0.4f, 0.75f - (tmpLvlTypeNr * 0.26f/6));
-            //tmpSkillMax = Mathf.Max(0.05f, 0.35f - (tmpLvlTypeNr * 0.05f));
+			
             tmpMass = Mathf.Min(1.125f, 1f + ((float)(playerData.getMassLvl()-1)* 0.005f));
             float tmpMassScaleSize = ((tmpMass - 1f) * 2f) + 1f;
             banan.transform.localScale = new Vector3(tmpMassScaleSize, tmpMassScaleSize, tmpMassScaleSize);
-            //Debug.Log("tmpMass: " + tmpMass + ", tmpMassScaleSize: " + tmpMassScaleSize);
-            //EnemyManager4 bananMngr = banan.GetComponent<EnemyManager4>();
+			
             bananMngr.setMotorParameters(tmpEnginePower, tmpAngularSpeed, tmpSkillMin, tmpSkillMax, tmpMass);
             bananMngr.setBananaTypeNr(0);
 
@@ -533,8 +428,7 @@ public class GameMngr : MonoBehaviour {
         //Debug.Log("hwMnLap: " + tmpHwMnLap);
         hwMnLap = tmpHwMnLap;
         bananMngr.setHwMnLap(tmpHwMnLap);
-
-        //bananMngr.setStartDustColor();
+		
         //Debug.Log("tmpEnginePower: " + tmpEnginePower);
 
         bananMngr.setDustParticleMaterial(playerData.shopStuffGetActive("smoke"));

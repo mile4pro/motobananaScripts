@@ -219,7 +219,6 @@ public class EnemyManager4 : MonoBehaviour {
         checkTimeTurnDelta();
         if (audioMotorFL && onFL) {audioMotorMgr.checkAudioMotor(timeTurnDelta, beginMotorEnginePower);}
         else if (audioMotorFL) {audioMotorMgr.audioMotorBeforeStartRace(beginMotorEnginePower);}
-        //drawToRoadFacture();
 
     }
 
@@ -377,7 +376,6 @@ public class EnemyManager4 : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll){
 
-        //audioCollision.playSoundCollision(coll.relativeVelocity.magnitude, EndRaceFL);
         Vector2 tmpRelVec = coll.relativeVelocity;
         audioCollision.playSoundCollision(tmpRelVec.magnitude, EndRaceFL);
 
@@ -481,18 +479,7 @@ public class EnemyManager4 : MonoBehaviour {
         }
         return false;
     }
-
-
-    /*bool nitroOn(){       //orginal
-        if (nitroStep > 5){
-            rb.drag = 1 - ((nitroStep-5) * nitro);
-            return true;
-        }
-        else {
-            rb.drag = 1;
-            return false;
-        }
-    }*/
+	
 
     bool nitroOn(){
         if (nitroStep > 5){
@@ -541,7 +528,6 @@ public class EnemyManager4 : MonoBehaviour {
 //driver Player or CPU
     public void setDriverPlayerFL(bool _FL){
         driverPlayerFL = _FL;
-        //setBananaType(0);
     }
 
 
@@ -572,7 +558,6 @@ public class EnemyManager4 : MonoBehaviour {
 
 
     public void setStartDustColor(){
-
         particleDustMgr.startColorDust(bananTypeNr);
     }
 
@@ -624,12 +609,9 @@ public class EnemyManager4 : MonoBehaviour {
             particleDustMgr.setDustSize(Mathf.Min(tmpDustSize, 1f));
         }*/
         float tmpTime = Time.time - particleDustTmpTime;
-        //if(tmpTime > 0.15f){
-            //float tmpNr = (float)(tmpTime*10)%10;
-            //float tmpDustSize = tmpNr/25f;
-            particleDustMgr.setDustRate(Mathf.Min(Mathf.Max(tmpTime*10, 10f), 15f));
-            particleDustMgr.setDustSize(Mathf.Min(Mathf.Max(tmpTime, .3f), 1f));
-        //}
+        
+		particleDustMgr.setDustRate(Mathf.Min(Mathf.Max(tmpTime*10, 10f), 15f));
+        particleDustMgr.setDustSize(Mathf.Min(Mathf.Max(tmpTime, .3f), 1f));
 
         if (optionsTraceOfTiresFL && tmpTime > 0.2) {
             float tmpDrawHwMn = (float)(tmpTime*0.1);
@@ -644,12 +626,7 @@ public class EnemyManager4 : MonoBehaviour {
             roadFacture = _roadFacture;
             return true;
     }
-
-    /*void drawToRoadFacture(){
-        roadFacture.SetPixel((int)(gameObject.transform.position.x * 100 + 360), (int)(gameObject.transform.position.y * 100 + 640), Color.black);
-        roadFacture.Apply();
-        Debug.Log("x, y: " + (int)(gameObject.transform.position.x * 100 + 360) + ", " + (int)(gameObject.transform.position.y * 100 + 640));
-    }*/
+	
 
     void drawToRoadFacture(float _hwMn){
 
@@ -658,56 +635,24 @@ public class EnemyManager4 : MonoBehaviour {
 
         Color tmpColorRoadUnderLeftWheel = roadFacture.GetPixel((int)(tmpPosLeFtWheel.x), (int)(tmpPosLeFtWheel.y));
         Color tmpColorRoadUnderRightWheel = roadFacture.GetPixel((int)(tmpPosRightWheel.x), (int)(tmpPosRightWheel.y));
+		
 
-        /*if (randomTraceOfTiresColorFL){
-            if (Random.value < 0.5) {optionsTraceOfTiresColorLightFL = true;}
-            else {optionsTraceOfTiresColorLightFL = false;}
-        }*/
+		tmpColorRoadUnderLeftWheel.r -= tmpColorRoadUnderLeftWheel.r * _hwMn;
+		tmpColorRoadUnderLeftWheel.g -= tmpColorRoadUnderLeftWheel.g * _hwMn;
+		tmpColorRoadUnderLeftWheel.b -= tmpColorRoadUnderLeftWheel.b * _hwMn;
 
-        /*if(optionsTraceOfTiresColorLightFL){
-            tmpColorRoadUnderLeftWheel.r += tmpColorRoadUnderLeftWheel.r * _hwMn;
-            tmpColorRoadUnderLeftWheel.g += tmpColorRoadUnderLeftWheel.g * _hwMn;
-            tmpColorRoadUnderLeftWheel.b += tmpColorRoadUnderLeftWheel.b * _hwMn;
+		tmpColorRoadUnderLeftWheel.r = Mathf.Max(tmpColorRoadUnderLeftWheel.r, maxTraceOfTiresColorDark);
+		tmpColorRoadUnderLeftWheel.g = Mathf.Max(tmpColorRoadUnderLeftWheel.g, maxTraceOfTiresColorDark);
+		tmpColorRoadUnderLeftWheel.b = Mathf.Max(tmpColorRoadUnderLeftWheel.b, maxTraceOfTiresColorDark);
 
-            tmpColorRoadUnderLeftWheel.r = Mathf.Min(tmpColorRoadUnderLeftWheel.r, maxTraceOfTiresColorLight);
-            tmpColorRoadUnderLeftWheel.g = Mathf.Min(tmpColorRoadUnderLeftWheel.g, maxTraceOfTiresColorLight);
-            tmpColorRoadUnderLeftWheel.b = Mathf.Min(tmpColorRoadUnderLeftWheel.b, maxTraceOfTiresColorLight);*/
-            //Debug.Log("tmpColorRoadUnderRightWheel: " + tmpColorRoadUnderRightWheel.r +", " + tmpColorRoadUnderRightWheel.g +", "+tmpColorRoadUnderRightWheel.b);
-            /*tmpColorRoadUnderRightWheel.r = 1;
-            tmpColorRoadUnderRightWheel.g = 1;
-            tmpColorRoadUnderRightWheel.b = 1;*/
-        /*    tmpColorRoadUnderRightWheel.r += tmpColorRoadUnderRightWheel.r * _hwMn;
-            tmpColorRoadUnderRightWheel.g += tmpColorRoadUnderRightWheel.g * _hwMn;
-            tmpColorRoadUnderRightWheel.b += tmpColorRoadUnderRightWheel.b * _hwMn;
+		tmpColorRoadUnderRightWheel.r -= tmpColorRoadUnderRightWheel.r * _hwMn;
+		tmpColorRoadUnderRightWheel.g -= tmpColorRoadUnderRightWheel.g * _hwMn;
+		tmpColorRoadUnderRightWheel.b -= tmpColorRoadUnderRightWheel.b * _hwMn;
 
-            tmpColorRoadUnderRightWheel.r = Mathf.Min(tmpColorRoadUnderRightWheel.r, maxTraceOfTiresColorLight);
-            tmpColorRoadUnderRightWheel.g = Mathf.Min(tmpColorRoadUnderRightWheel.g, maxTraceOfTiresColorLight);
-            tmpColorRoadUnderRightWheel.b = Mathf.Min(tmpColorRoadUnderRightWheel.b, maxTraceOfTiresColorLight);
-        }
-        else{*/
-
-            //maxTraceOfTiresColorDark = beginTraceOfTiresColorDark - deltaTraceOfTiresColorDark;
-
-            tmpColorRoadUnderLeftWheel.r -= tmpColorRoadUnderLeftWheel.r * _hwMn;
-            tmpColorRoadUnderLeftWheel.g -= tmpColorRoadUnderLeftWheel.g * _hwMn;
-            tmpColorRoadUnderLeftWheel.b -= tmpColorRoadUnderLeftWheel.b * _hwMn;
-
-            tmpColorRoadUnderLeftWheel.r = Mathf.Max(tmpColorRoadUnderLeftWheel.r, maxTraceOfTiresColorDark);
-            tmpColorRoadUnderLeftWheel.g = Mathf.Max(tmpColorRoadUnderLeftWheel.g, maxTraceOfTiresColorDark);
-            tmpColorRoadUnderLeftWheel.b = Mathf.Max(tmpColorRoadUnderLeftWheel.b, maxTraceOfTiresColorDark);
-
-            //Debug.Log("tmpColorRoadUnderRightWheel: " + tmpColorRoadUnderRightWheel.r +", " + tmpColorRoadUnderRightWheel.g +", "+tmpColorRoadUnderRightWheel.b);
-            /*tmpColorRoadUnderRightWheel.r = 1;
-            tmpColorRoadUnderRightWheel.g = 1;
-            tmpColorRoadUnderRightWheel.b = 1;*/
-            tmpColorRoadUnderRightWheel.r -= tmpColorRoadUnderRightWheel.r * _hwMn;
-            tmpColorRoadUnderRightWheel.g -= tmpColorRoadUnderRightWheel.g * _hwMn;
-            tmpColorRoadUnderRightWheel.b -= tmpColorRoadUnderRightWheel.b * _hwMn;
-
-            tmpColorRoadUnderRightWheel.r = Mathf.Max(tmpColorRoadUnderRightWheel.r, maxTraceOfTiresColorDark);
-            tmpColorRoadUnderRightWheel.g = Mathf.Max(tmpColorRoadUnderRightWheel.g, maxTraceOfTiresColorDark);
-            tmpColorRoadUnderRightWheel.b = Mathf.Max(tmpColorRoadUnderRightWheel.b, maxTraceOfTiresColorDark);
-        //}
+		tmpColorRoadUnderRightWheel.r = Mathf.Max(tmpColorRoadUnderRightWheel.r, maxTraceOfTiresColorDark);
+		tmpColorRoadUnderRightWheel.g = Mathf.Max(tmpColorRoadUnderRightWheel.g, maxTraceOfTiresColorDark);
+		tmpColorRoadUnderRightWheel.b = Mathf.Max(tmpColorRoadUnderRightWheel.b, maxTraceOfTiresColorDark);
+			
 
         roadFacture.SetPixel((int)(tmpPosLeFtWheel.x), (int)(tmpPosLeFtWheel.y), tmpColorRoadUnderLeftWheel);
         roadFacture.SetPixel((int)(tmpPosLeFtWheel.x+1), (int)(tmpPosLeFtWheel.y), tmpColorRoadUnderLeftWheel);
@@ -720,8 +665,6 @@ public class EnemyManager4 : MonoBehaviour {
         roadFacture.SetPixel((int)(tmpPosRightWheel.x+1), (int)(tmpPosRightWheel.y), tmpColorRoadUnderRightWheel);
         roadFacture.SetPixel((int)(tmpPosRightWheel.x), (int)(tmpPosRightWheel.y+1), tmpColorRoadUnderRightWheel);
         roadFacture.SetPixel((int)(tmpPosRightWheel.x), (int)(tmpPosRightWheel.y-1), tmpColorRoadUnderRightWheel);
-        //roadFacture.Apply();
-        //Debug.Log("x, y: " + (int)(gameObject.transform.position.x * 100 + 360) + ", " + (int)(gameObject.transform.position.y * 100 + 640));
     }
 
 
@@ -739,8 +682,6 @@ public class EnemyManager4 : MonoBehaviour {
         optionsDustOnRoadFL = _dustFL;
         optionsTraceOfTiresFL = _traceFL;
         optionsTraceOfTiresColorLightFL = _traceLightFL;
-
-        //if(!optionsDustOnRoadFL){particleDustMgr.stopParticle();}
 
         return true;
     }

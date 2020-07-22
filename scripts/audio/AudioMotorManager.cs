@@ -56,11 +56,10 @@ public class AudioMotorManager : MonoBehaviour {
     public bool checkAudioMotor(float _hwMn, float _motorEnginePower){
 
         timeOneTickTmp = Mathf.Max(0.001f, timeOneTick - (_hwMn*0.25f) - ((_motorEnginePower-2)*0.05f));
-        //if (timeOneTickTmp < 0.00275f) {timeOneTickTmp = 0.00275f;}
+		
         timeTmp = Time.time;
         if (timeTmp - timeTmpDelta > timeOneTickTmp){
-            //valvesMotor[actualValveNr].volume = Mathf.Min(.75f, defaultVolume + (_hwMn*0.5f));
-            //if (endRaceFL){valvesMotor[actualValveNr].volume = defaultVolumeEndRace;}
+			
             valvesMotor[actualValveNr].Play();
 
             valvesMotor[actualValveNr].pitch = Mathf.Min(7.5f, Mathf.Max(2f, 1f + (7.5f*_hwMn))) * Mathf.Max(0.15f, Time.timeScale);
